@@ -19,3 +19,5 @@
 </ul>
 <p>OBS: Mudar a porta da API e do servidor mysql conforme a necessidade.</p>
 
+
+<h4>Para iniciar use node popsApi.js ou usar o PM2 para gerenciar</h4>
