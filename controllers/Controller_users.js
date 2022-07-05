@@ -17,11 +17,11 @@ class User{
         })
         .then((res)=>{
             isSucess = true
-            retorno.msg = "Solicitação de Permissão feita com sucesso!"
+            retorno.msg = "Solicitação de acesso feita com sucesso! Aguarde a aprovação."
             retorno.dados = res
         })
         .catch((err)=>{
-            retorno.msg = "ERRO ao solicitar permissão"
+            retorno.msg = "ERRO ao solicitar permissão de acesso"
             retorno.dados = err
             console.error(err);
         })
@@ -30,7 +30,7 @@ class User{
     }
 
     async login(req, res){
-        log(`Logando usuário: ${req.body.name}`, 'info')
+        log(`Logando usuário`, 'info')
         let isSucess = false
 		let retorno = {}
 
@@ -38,14 +38,14 @@ class User{
         .then((res)=>{
             if(res.length === 0){
                 isSucess = false
-                retorno.msg = "Não foi encontrado usuário com este Serial."
+                retorno.msg = "Permissão não solicitada."
             }else{
                 if(res[0].active === 'no'){
                     isSucess = false
-                    retorno.msg = `${res[0].name}, seu SmartPhone ainda não foi aprovado!`
+                    retorno.msg = `${res[0].name}, sua aprovação está pendente.`
                 }else{
                     isSucess = true
-                    retorno.msg = "Login feito com sucesso!"
+                    retorno.msg = "Acesso liberado!"
                 }
             }
             retorno.dados = res

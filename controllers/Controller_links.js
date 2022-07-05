@@ -35,7 +35,7 @@ class User{
         await LinkModel.findAll()
         .then((res)=>{
             isSucess = true
-            retorno.msg = "Sucesso ao listar os Links"
+            retorno.msg = "Clique sobre os nomes para abrir o arquivo."
             retorno.dados = res
         })
         .catch((err)=>{

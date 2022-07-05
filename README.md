@@ -7,7 +7,7 @@
 - [x] Fazer o download do projeto.
 - [x] Executar o comando na raiz do projeto: "npm install".
 - [x] Criar no servidor de banco de dados o seguinte database: "pops_micks".
-- [x] Na raiz desse projeto tem um arquivo JSON exportado do Insomina com todas as rotas para teste e produção de um frontEnd caso seja necessário para aprovar as solicitações, apagar, editar, etc. E também para cadastrar, editar, listar e excluir a lista dos PDFs.
+- [x] Na raiz desse projeto tem um arquivo JSON exportado do Insomina "Insomnia_2022-07-05.json" com todas as rotas para teste e produção de um frontEnd caso seja necessário para aprovar as solicitações, apagar, editar, etc. E também para cadastrar, editar, listar e excluir a lista dos PDFs.
 - [x] Criar na raiz do projeto um arquivo ".env" e cadastrar as seguintes informações:
 <ul>
     <li>DB_NAME = pops_micks</li>
