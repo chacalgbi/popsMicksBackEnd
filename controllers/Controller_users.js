@@ -13,7 +13,8 @@ class User{
             name: req.body.name,
             serialPhone: req.body.serialPhone,
             active: "no",
-            obs: req.body.obs
+            obs: req.body.obs,
+            typeUser: "temp"
         })
         .then((res)=>{
             isSucess = true
@@ -100,6 +101,7 @@ class User{
             UserChange.name = req.body.name
             UserChange.serialPhone = req.body.serialPhone
             UserChange.obs = req.body.obs
+            UserChange.typeUser = req.body.typeUser
 
             await UserChange.save()
             .then((res)=>{

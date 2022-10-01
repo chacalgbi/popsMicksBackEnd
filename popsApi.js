@@ -3,7 +3,6 @@ const app = require('./app');
 const log   = require('./utils/log');
 const database = require('./dataBase')
 
-
 async function testBD(){
 	let isConected = false
 

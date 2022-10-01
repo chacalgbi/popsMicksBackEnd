@@ -1,8 +1,9 @@
 const API = require('../utils/API')
 const log = require('../utils/log')
 const LinkModel = require('../models/links')
+const { Op } = require("sequelize")
 
-class User{
+class Link{
 
     async insert(req, res){
         log('Criar Link', 'info')
@@ -11,7 +12,8 @@ class User{
 
         await LinkModel.create({
             text: req.body.text,
-            linkAdress: req.body.linkAdress
+            linkAdress: req.body.linkAdress,
+            typeUser: req.body.typeUser
         })
         .then((res)=>{
             isSucess = true
@@ -29,10 +31,13 @@ class User{
 
     async index(req, res){
         log('Listar Links', 'info')
+        //console.log(req.query.typeUser)
         let isSucess = false
 		let retorno = {}
+        const types = req.query.typeUser.split(",")
+        console.log(types)
 
-        await LinkModel.findAll()
+        await LinkModel.findAll({ where: { typeUser:{[Op.or]:types}}})
         .then((res)=>{
             isSucess = true
             retorno.msg = "Clique sobre os nomes para abrir o arquivo."
@@ -51,12 +56,12 @@ class User{
         log('Editar Link', 'info')
         let isSucess = false
 		let retorno = {}
-        let UserChange
+        let LinkChange
 
         await LinkModel.findByPk(req.body.id)
         .then((res)=>{
             isSucess = true
-            UserChange = res
+            LinkChange = res
         })
         .catch((err)=>{
             retorno.msg = "ERRO ao buscar ID do Link"
@@ -65,10 +70,11 @@ class User{
         })
 
         if(isSucess){
-            UserChange.text = req.body.text
-            UserChange.linkAdress = req.body.linkAdress
+            LinkChange.text = req.body.text
+            LinkChange.linkAdress = req.body.linkAdress
+            LinkChange.typeUser = req.body.typeUser
 
-            await UserChange.save()
+            await LinkChange.save()
             .then((res)=>{
                 isSucess = true
                 retorno.dados = res
@@ -106,4 +112,4 @@ class User{
     }
 
 }
-module.exports = new User();
+module.exports = new Link();

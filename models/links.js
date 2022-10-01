@@ -15,6 +15,10 @@ const Link = database.define('link', {
     linkAdress: {
         type: Sequelize.STRING,
         allowNull: false
+    },
+    typeUser: {
+        type: Sequelize.STRING,
+        allowNull: false
     }
 })
 

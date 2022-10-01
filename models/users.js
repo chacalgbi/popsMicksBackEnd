@@ -23,6 +23,10 @@ const User = database.define('user', {
     obs: {
         type: Sequelize.STRING,
         allowNull: true
+    },
+    typeUser: {
+        type: Sequelize.STRING,
+        allowNull: false
     }
 })
 
